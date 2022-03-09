@@ -14,6 +14,7 @@ jobs:
       - run: npm install
       - run: npm test > test.log
       - name: Archive build's test logs
+        if: always()
         uses: actions/upload-artifact@v3
         with:
           name: test_log
