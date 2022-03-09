@@ -11,8 +11,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - run: npm ci
-      - run: npm test > test.log
+      - run: npm install
+      - run: CI=true npm test > test.log
       - name: Archive build's test logs
         if: always()
         uses: actions/upload-artifact@v3
