@@ -19,14 +19,14 @@ jobs:
           name: test_log
           path: test.log
     
-    workflow-restart:
-      if: ${{ failure() }} # ${{ run-tests.status == 'failure' }}
-      needs: run-tests
-      runs-on: ubuntu-latest
-      steps:
-        - name: Downloading build's test log
-          uses: actions/download-artifact@v3
-          with:
-            name: test_log
-        - name: Outputing log
-          run: cat test.log
+  workflow-restart:
+    if: ${{ failure() }} # ${{ run-tests.status == 'failure' }}
+    needs: run-tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Downloading build's test log
+        uses: actions/download-artifact@v3
+        with:
+          name: test_log
+      - name: Outputing log
+        run: cat test.log
