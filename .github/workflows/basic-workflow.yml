@@ -12,13 +12,13 @@ jobs:
         with:
           node-version: '14'
       - run: npm install
-      - run: npm test > ./test.log
+      - run: npm test > test.log
       - name: Archive build's test logs
         if: always()
         uses: actions/upload-artifact@v3
         with:
           name: test_log
-          path: test.log
+          path: test-app/test.log
     
   workflow-restart:
     if: ${{ failure() }} # ${{ run-tests.status == 'failure' }}
