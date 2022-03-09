@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: '14'
       - run: npm install
-      - run: npm test 2>&1 | tee test.log
+      - run: npm test | tee test.log
       - name: Archive build's test logs
         if: always()
         uses: actions/upload-artifact@v3
