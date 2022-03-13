@@ -28,7 +28,6 @@ jobs:
       - uses: ./.github/workflows/restart-workflow.yml
         with:
           run_id: ${{ github.run_id }}
-        secrets:
           PAT: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
     #  - name: Downloading build's test log
     #    uses: actions/download-artifact@v3
