@@ -16,10 +16,11 @@ jobs:
       - name: Restart workflow on failure
         if: ${{ failure() }} # ${{ run-tests.status == 'failure' }}
         #needs: run-tests
-        uses: ./../.github/workflows/restart-workflow.yml
+        uses: peter-evans/repository-dispatch@v1
         with:
-          run_id: ${{ github.run_id }}
-          PAT: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          event-type: restart
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          client-payload: '{"run_id": "${{ github.run_id }}"}'
       #- name: Archive build's test logs
       #  if: always()
       #  uses: actions/upload-artifact@v3
