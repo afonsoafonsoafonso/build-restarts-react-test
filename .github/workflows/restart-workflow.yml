@@ -1,0 +1,19 @@
+name: restart-workflow
+on:
+  workflow_call:
+    inputs:
+      run_id:
+        required: true
+        type: string
+    secrets:
+      PAT:
+        required: true
+jobs:
+  restart-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: restart
+        run: |
+          URL=https://api.github.com/repos/${{github.repository}}/actions/runs/${{ inputs.run_id }}/rerun
+          curl -X POST -u "${{ repository_owner }}:${{ secrets.PAT }}" $URL
+      

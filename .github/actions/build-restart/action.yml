@@ -1,0 +1,12 @@
+name: 'Automatic Build Restart'
+description: 'Restarts builds automatically if an external momentary cause is detected, e.g. network issues, compilation errors.'
+inputs:
+  build-log:  # id of input
+    description: 'Build log to be parsed and root caused.'
+    required: true
+outputs:
+  restarted: # id of output
+    description: 'If build was restarted or not.'
+runs:
+  using: 'node16'
+  main: 'index.js'
