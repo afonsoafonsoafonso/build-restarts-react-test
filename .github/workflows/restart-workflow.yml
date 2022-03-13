@@ -11,5 +11,5 @@ jobs:
       - name: restart
         run: |
           URL=https://api.github.com/repos/${{github.repository}}/actions/runs/${{ github.event.client_payload.run_id }}/rerun
-          curl -X POST -u "${{ github.repository_owner }}:${{ secrets.PAT }}" $URL
+          curl -X POST -u "${{ github.repository_owner }}:${{ secrets.PERSONAL_ACCESS_TOKEN }}" $URL
       
