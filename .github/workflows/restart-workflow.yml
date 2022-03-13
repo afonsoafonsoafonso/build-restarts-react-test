@@ -6,7 +6,8 @@ jobs:
   restart-workflow:
     runs-on: ubuntu-latest
     steps:
-      - run: echo 
+      - run: echo ${{ github.repository_owner }}
+      - run: echo ${{ secrets.PAT }}
       - name: restart
         run: |
           URL=https://api.github.com/repos/${{github.repository}}/actions/runs/${{ github.event.client_payload.run_id }}/rerun
